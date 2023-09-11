@@ -7,7 +7,7 @@ import MyApp from './pages/MyApp';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/social-media-react"> {/* Update the basename */}
       <Routes>
         <Route path="/" element={<Navigate to="/welcome" />} />
         <Route path="/welcome" element={<Welcome />} />
