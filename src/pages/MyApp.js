@@ -4,9 +4,8 @@ import Sidebar from '../components/Sidebar'
 export default function MyApp() {
   return (
     <>
-     <Sidebar />
-      <section className='bg-neutral-100 flex justify-center items-center text-center h-screen w-full'>
-      </section>
+      <h1 className='text-center font-bold text-3xl md:text-4xl text-black dark:text-white'>WELCOME TO THE APP</h1>
+      <Sidebar />
     </>
   )
 }

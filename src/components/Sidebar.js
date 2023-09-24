@@ -7,17 +7,15 @@ import { ReactComponent as MessageIcon } from '../icons/message.svg'
 import { ReactComponent as CalendarIcon } from '../icons/calendar.svg'
 import { ReactComponent as SignOutIcon } from '../icons/signout.svg'
 
-
-
 function Sidebar() {
 
   const [expanded, setExpanded] = useState(false);
 
   const sidebarItems = [
-    { id: 1, icon: <ProfileIcon />, name: 'Profile' },
-    { id: 2, icon: <FriendsleIcon />, name: 'Friends' },
-    { id: 3, icon: <MessageIcon />, name: 'Messages' },
-    { id: 4, icon: <CalendarIcon />, name: 'Calendar' },
+    { id: 1, icon: <MessageIcon />, name: 'Messages', link: '/messages' },
+    { id: 2, icon: <FriendsleIcon />, name: 'Friends', link: '/friends' },
+    { id: 3, icon: <ProfileIcon/>, name: 'Profile', link: '/profile' },
+    { id: 4, icon: <CalendarIcon />, name: 'Calendar', link: '/calendar' },
   ];
 
   const toggleSidebar = () => {
@@ -72,7 +70,9 @@ function Sidebar() {
         )}
       </button>
       <div className="lg:flex lg:flex-col font-rajdhani font-normal text-lg">
+        
         {sidebarItems.map((item) => (
+          <Link to={item.link} key={item.id} className="text-decoration-none">
           <div key={item.id} className="flex justify-center p-3 mx-auto w-full transition duration-500 ease-in-out text-neutral-100 hover:bg-neutral-100 hover:text-neutral-800 cursor-pointer">          
             <span title={item.name}></span>
             {expanded ? (
@@ -90,6 +90,7 @@ function Sidebar() {
               
             )}
           </div>
+          </Link>
         ))}
 
         <div key={sidebarItems.length + 1} className="absolute flex bottom-3 justify-between self-center p-3 w-full transition duration-500 ease-in-out text-neutral-100 hover:bg-neutral-100 hover:text-neutral-800 cursor-pointer">
@@ -105,20 +106,24 @@ function Sidebar() {
 
       {/* Bottom Menu */}
     <div className="fixed bottom-0 md:hidden left-0 z-50 w-full h-16 bg-neutral-800 font-rajdhani font-normal">
-      <div className="grid h-full max-w-lg grid-cols-4 mx-auto ">
-          <button type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
-            <ProfileIcon />
-            <span className="text-sm mt-1">Profile</span>
-          </button>
-          <button type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
-            <FriendsleIcon />
-            <span className="text-sm mt-1">Friends</span>
-          </button>
-          <button type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
+      <div className="grid h-full max-w-lg grid-cols-5 mx-auto ">
+          <Link to='/messages' type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
             <MessageIcon />
             <span className="text-sm mt-1">Messages</span>
-          </button>
-          <Link onClick={onLogout} type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
+          </Link>
+          <Link to='/friends' type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
+            <FriendsleIcon />
+            <span className="text-sm mt-1">Friends</span>
+          </Link>
+          <Link to="/profile" type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
+            <ProfileIcon />
+            <span className="text-sm mt-1">Profile</span>
+          </Link>
+          <Link to="/calendar" type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
+            <CalendarIcon />
+            <span className="text-sm mt-1">Calendar</span>
+          </Link>
+          <Link to='/welcome' onClick={onLogout} type="button" className="hover:bg-neutral-100 text-neutral-100 transition duration-500 ease-in-out hover:text-neutral-800 inline-flex flex-col items-center justify-center px-5">
             <SignOutIcon />
             <span className="text-sm mt-1">Sign Out</span>
           </Link>

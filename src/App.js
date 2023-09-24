@@ -5,7 +5,9 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import MyApp from './pages/MyApp';
 import Profile from './pages/Profile';
-
+import Friends from './pages/Friends';
+import Messages from './pages/Messages';
+import Calendar from './pages/Calendar';
 function App() {
     
 
@@ -17,7 +19,10 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/myapp" element={<MyApp />} />
-        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/profile" element={<Profile />}/>
+        <Route path="/friends" element={<Friends />}/>
+        <Route path="/messages" element={<Messages />}/>
+        <Route path="/calendar" element={<Calendar />}/>
       </Routes>
     </Router>
   );
